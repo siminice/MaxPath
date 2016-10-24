@@ -1,0 +1,61 @@
+/*
+Problem
+-------
+Input: a binary tree with integer node values.
+Output: the path with the maximum sum of values.
+
+Example
+-------
+Input:
+
+         3
+        / \
+       /   \
+      /     \
+     5       7
+    / \     / \
+   1   2  -2  -3
+
+Output:
+ 'MaxPath: 3 + 5 + 2 = 10'
+*/
+
+import java.io.*;
+import java.util.*;
+
+class Solution {
+
+  public static class Node {
+    private int value;
+    private Node left;
+    private Node right;
+    
+    public Node(int v, Node l, Node r) {
+      this.value = v;
+      this.left = l;
+      this.right = r;
+    }
+    
+  }
+
+
+  /* ... Add more code here as needed ... */ 
+
+
+  public static void main(String[] args) {
+    Node root = new Node(3,
+                         new Node(5,
+                             new Node(1,  null, null),
+                             new Node(2,  null, null)
+                         ),
+                         new Node(7,
+                             new Node(-2, null, null),
+                             new Node(-3, null, null)
+                         )
+                );
+
+    /* ... Add code to compute the actual solution ... */ 
+
+  }
+}
+
