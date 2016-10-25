@@ -12,6 +12,9 @@ public class MaxPath {
       this.left = l;
       this.right = r;
     }
+    public Node(int v) {
+      this(v, null, null);
+    }
   }
 
   public static class SearchResult {
@@ -28,26 +31,28 @@ public class MaxPath {
   }
 
   public static SearchResult maxPath(Node n) {
-    if (n == null) return new SearchResult(0, "");
-    if (n.left == null && n.right == null) return new SearchResult(n.value, String.valueOf(n.value));
+    if (n == null)
+      return new SearchResult(0, "");
+    if (n.left == null && n.right == null)
+      return new SearchResult(n.value, String.valueOf(n.value));
     SearchResult solveLeft = maxPath(n.left);
     SearchResult solveRight = maxPath(n.right);
-    if (solveLeft.max > solveRight.max) {
-      return new SearchResult(n.value + solveLeft.max, n.value + " + " + solveLeft.path);
+    if (solveLeft.getMax() > solveRight.getMax()) {
+      return new SearchResult(n.value + solveLeft.getMax(), n.value + " + " + solveLeft.getPath());
     } else {
-      return new SearchResult(n.value + solveRight.max, n.value + " + " + solveRight.path);
+      return new SearchResult(n.value + solveRight.getMax(), n.value + " + " + solveRight.getPath());
     }
   }
 
   public static void main(String[] args) {
     Node root = new Node(3, 
                          new Node(5, 
-                             new Node(1,  null, null),
-                             new Node(2,  null, null)
+                             new Node(1),
+                             new Node(2)
                          ),
                          new Node(7, 
-                             new Node(-2, null, null),
-                             new Node(-3, null, null)
+                             new Node(-2),
+                             new Node(-3)
                          )
                 );
     SearchResult s = maxPath(root);
